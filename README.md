@@ -1,1 +1,1 @@
-A basic skeleton, created with a few different packages.
+A cool weather app
