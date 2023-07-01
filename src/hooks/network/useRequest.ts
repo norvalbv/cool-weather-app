@@ -4,7 +4,6 @@ import fetcher, { FetcherOptions } from 'hooks/network/useFetcher';
 
 type UseRequestParameters<T> = {
   uri: string;
-  token: string;
   options?: SWRConfiguration<T>;
   fetcherOptions?: FetcherOptions;
 };
@@ -24,7 +23,6 @@ const defaultOptions: SWRConfiguration = {
  */
 const useRequest = <T>({
   uri,
-  token,
   options,
   fetcherOptions,
 }: UseRequestParameters<T>): ApiResponse<T> => {
@@ -32,7 +30,7 @@ const useRequest = <T>({
   // https://swr.vercel.app/docs/conditional-fetching
   const { data, error, isValidating, isLoading } = useSWR<T, ApiError>(
     uri,
-    uri && token ? (): Promise<T> => fetcher<T>({ uri, token, fetcherOptions }) : null,
+    uri ? (): Promise<T> => fetcher<T>({ uri, fetcherOptions }) : null,
     {
       ...defaultOptions,
       ...options,

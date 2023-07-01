@@ -6,11 +6,13 @@ export type FetcherOptions = {
 };
 export type UseFetcherProps = {
   uri: string;
-  token: string;
   fetcherOptions?: FetcherOptions;
 };
 
-const useFetcher = <T>({ uri, token, fetcherOptions }: UseFetcherProps): Promise<T> => {
+/**
+ * Custom fetcher for SWR and axios
+ */
+const useFetcher = <T>({ uri, fetcherOptions }: UseFetcherProps): Promise<T> => {
   const headers: RawAxiosRequestHeaders | undefined = fetcherOptions ? {} : undefined;
 
   if (headers && !fetcherOptions?.cache) {
