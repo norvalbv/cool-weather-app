@@ -11,7 +11,7 @@ type HourlyWeatherProps = {
 const HourlyWeather = ({ data, timezoneOffset }: HourlyWeatherProps): ReactElement => {
   const processedData = data.slice(1, 8);
   return (
-    <div className="flex divide-x divide-violet-700">
+    <div className="flex flex-wrap divide-violet-700 md:flex-nowrap md:divide-x">
       {processedData.map((weather) => (
         <div className="flex w-32 flex-col items-center justify-center gap-1">
           <span>{convertEpochToTime({ epoch: weather.dt, offset: timezoneOffset })}</span>
