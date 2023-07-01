@@ -3,33 +3,23 @@ import CodeIcon from 'components/SVG/CodeIcon';
 import { WeatherApiData } from 'types';
 import classNames from 'utils/classNames';
 import Toggle from 'components/Toggle';
-import PartlyCloudyDay from 'components/SVG/Weather/PartlyCloudyDay';
 import Sunrise from 'components/SVG/Weather/Sunrise';
 import Sunset from 'components/SVG/Weather/Sunset';
 import HorizontalTable from 'components/HorizontalTable';
-import OvercastDay from 'components/SVG/Weather/OvercastDay/ index';
-import LightRainDay from 'components/SVG/Weather/LightRainDay';
-import useConvertToTime from 'hooks/useConvertToTime';
+import { weatherIcons } from 'components/constants/weatherIcons';
+import HourlyWeather from './HourlyWeather';
+import convertEpochToTime from 'utils/convertToTime';
 
 type WeatherCardProps = {
   className?: string;
   data: WeatherApiData;
 };
 
-const weatherIcons = {
-  'broken clouds': <PartlyCloudyDay />,
-  'overcast clouds': <OvercastDay />,
-  'light rain': <LightRainDay />,
-};
-
 const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
-  const sunrise = useConvertToTime({ epoch: data.current.sunrise, offset: data.timezone_offset });
-  const sunset = useConvertToTime({ epoch: data.current.sunset, offset: data.timezone_offset });
-
   return (
     <div
       className={classNames(
-        'bg-secondary h-[28rem] max-w-4xl rounded-lg p-6 shadow-2xl dark:bg-gray-900',
+        'bg-secondary max-w-4xl rounded-lg p-6 shadow-2xl dark:bg-gray-900',
         className
       )}
     >
@@ -49,16 +39,19 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
         </a>
       </div>
       <section
-        className={classNames(
-          'bg-primary h-[14rem] w-full rounded-lg px-4 py-2 shadow-lg',
-          className
-        )}
+        className={classNames('bg-primary w-full rounded-lg px-4 py-2 shadow-lg', className)}
       >
-        <div className="flex items-baseline justify-between">
-          <span className="inline-block underline underline-offset-4">Current Weather</span>
+        <div className="flex items-baseline justify-between p-2">
+          <div className="divide-y divide-violet-700">
+            <span className="block">
+              Current Time:&nbsp;
+              {convertEpochToTime({ epoch: data.current.dt, offset: data.timezone_offset })}
+            </span>
+            <span className="block">Current Weather:</span>
+          </div>
           <Toggle labelLeft="C" labelRight="F" />
         </div>
-        <div className="flex flex-col items-center gap-8 md:flex-row">
+        <div className="flex flex-col items-center gap-8 lg:flex-row">
           <div className="flex items-center gap-8">
             <div className="h-32 w-32">{weatherIcons[data.current.weather[0].description]}</div>
             <div>
@@ -68,7 +61,7 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
               </span>
             </div>
           </div>
-          <div className="flex flex-1 gap-16">
+          <div className="flex flex-1 flex-col gap-4 sm:flex-row sm:gap-16">
             <ul className="divide-y divide-violet-700 capitalize">
               <li>
                 <HorizontalTable
@@ -89,7 +82,7 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
             </ul>
             <ul className="divide-y divide-violet-700 capitalize">
               <li>
-                <HorizontalTable title="Cloud" value={data.current.clouds} />
+                <HorizontalTable title="Clouds" value={data.current.clouds} valueSymbol="%" />
               </li>
               <li>
                 <HorizontalTable title="Wind" value={data.current.wind_deg} />
@@ -102,25 +95,34 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
               </li>
             </ul>
           </div>
-          <div className="text-sm">
+          <div className="flex gap-8 text-sm lg:flex-col lg:gap-0">
             <div className="flex flex-col items-center ">
               <Sunrise className="w-14" />
               <div className="flex gap-2">
                 <span>sunrise</span>
-                <span>{sunrise}</span>
+                <span>
+                  {convertEpochToTime({
+                    epoch: data.current.sunrise,
+                    offset: data.timezone_offset,
+                  })}
+                </span>
               </div>
             </div>
             <div className="flex flex-col items-center">
               <Sunset className="w-14" />
               <div className="flex gap-2">
                 <span>sunset</span>
-                <span>{sunset}</span>
+                <span>
+                  {convertEpochToTime({ epoch: data.current.sunset, offset: data.timezone_offset })}
+                </span>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="bg-primary mt-4 h-[7rem] w-full rounded-lg px-4 py-2 shadow-lg"></section>
+      <section className="bg-primary mt-4 w-full rounded-lg px-4 py-2 shadow-lg">
+        <HourlyWeather data={data.hourly} timezoneOffset={data.timezone_offset} />
+      </section>
     </div>
   );
 };

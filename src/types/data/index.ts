@@ -1,12 +1,14 @@
 type Weather = { description: string; icon: string; id: number; main: string };
 
-type CurrentWeather = {
+export type CurrentWeather = {
   clouds: number;
   dew_point: number;
   dt: number;
   feels_like: number;
   humidity: number;
+  pop?: number;
   pressure: number;
+  rain?: { [key: string]: number };
   sunrise: number;
   sunset: number;
   temp: number;
