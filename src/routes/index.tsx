@@ -8,9 +8,11 @@ export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<MainLayout />}>
-        <Route path="home" element={<Landing />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="about-us" element={<Landing />} />
+        <Route path="services" element={<Landing />} />
       </Route>
-      <Route path="/" element={<MinimalLayout />}>
+      <Route element={<MinimalLayout />}>
         <Route path="*" element={<NotFound />} />
       </Route>
     </Route>
