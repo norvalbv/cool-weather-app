@@ -7,6 +7,7 @@ import PartlyCloudyDay from 'components/SVG/Weather/PartlyCloudyDay';
 import Sunrise from 'components/SVG/Weather/Sunrise';
 import Sunset from 'components/SVG/Weather/Sunset';
 import Overcast from 'components/SVG/Weather/Overcast/ index';
+import HorizontalTable from 'components/HorizontalTable';
 
 type WeatherCardProps = {
   className?: string;
@@ -61,18 +62,38 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
               </span>
             </div>
           </div>
-          <div className="flex flex-1 gap-4">
-            <ul className="divide-x-1 capitalize">
-              <li>Feels Like&nbsp;{data.current.feels_like}&deg;</li>
-              <li>Humidity&nbsp;{data.current.humidity}</li>
-              <li>Pressure&nbsp;{data.current.pressure}</li>
-              <li>UVI&nbsp;{data.current.uvi}</li>
+          <div className="flex flex-1 gap-16">
+            <ul className="divide-y divide-violet-700 capitalize">
+              <li>
+                <HorizontalTable
+                  title="Feels Like"
+                  value={data.current.feels_like}
+                  valueSymbol="°"
+                />
+              </li>
+              <li>
+                <HorizontalTable title="Humidity" value={data.current.humidity} valueSymbol="%" />
+              </li>
+              <li>
+                <HorizontalTable title="Pressue" value={data.current.pressure} />
+              </li>
+              <li>
+                <HorizontalTable title="UVI" value={data.current.uvi} />
+              </li>
             </ul>
-            <ul className="divide-x-1 capitalize">
-              <li>Clouds&nbsp;{data.current.clouds}&deg;</li>
-              <li>Wind Deg&nbsp;{data.current.wind_deg}</li>
-              <li>Wind Gust&nbsp;{data.current.wind_gust}</li>
-              <li>Wind Speed&nbsp;{data.current.wind_speed}</li>
+            <ul className="divide-y divide-violet-700 capitalize">
+              <li>
+                <HorizontalTable title="Cloud" value={data.current.clouds} />
+              </li>
+              <li>
+                <HorizontalTable title="Wind" value={data.current.wind_deg} />
+              </li>
+              <li>
+                <HorizontalTable title="Wind Gust" value={data.current.wind_gust} />
+              </li>
+              <li>
+                <HorizontalTable title="Wind Speed" value={data.current.wind_speed} />
+              </li>
             </ul>
           </div>
           <div>
