@@ -10,14 +10,14 @@ type WeatherCardProps = {
 
 const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
   return (
-    <section
+    <div
       className={classNames(
-        'block h-[28rem] max-w-4xl rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-800 dark:bg-gray-900',
+        'bg-primary block h-[28rem] max-w-4xl rounded-lg border p-6 shadow dark:border-gray-800 dark:bg-gray-900',
         className
       )}
     >
       <div className="items-top flex justify-between">
-        <h2 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h2 className="mb-2 text-xl font-bold tracking-tight text-gray-200">
           Weather Today in {`${data.lat} ${data.lon}`}
         </h2>
         <a
@@ -25,14 +25,16 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <CodeIcon className="cursor-pointer rounded-lg border p-1 hover:bg-gray-200 dark:hover:bg-gray-600" />
+          <CodeIcon className="cursor-pointer rounded-lg border bg-gray-200 p-1 hover:bg-gray-600" />
         </a>
       </div>
-      <p className="font-normal text-gray-700 dark:text-gray-400">
-        Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse
-        chronological order.
-      </p>
-    </section>
+      <section
+        className={classNames(
+          'bg-secondary block h-[14rem] w-full rounded-lg  p-6 shadow-lg',
+          className
+        )}
+      ></section>
+    </div>
   );
 };
 

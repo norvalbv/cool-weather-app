@@ -19,7 +19,7 @@ const Landing = () => {
       {/* <Banner /> */}
       {/* <WebStats /> */}
       <ButtonGroup className="my-10 flex w-full items-center justify-center" />
-      <WeatherCard className="mx-auto my-10" data={data} />
+      <WeatherCard className="mx-auto" data={data} />
     </div>
   );
 };
