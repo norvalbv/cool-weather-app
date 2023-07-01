@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-const Loader = () => {
+const Loader = (): ReactElement => {
   return (
     <div className="grid h-screen w-full place-items-center">
       <svg

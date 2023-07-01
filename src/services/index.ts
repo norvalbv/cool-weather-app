@@ -17,7 +17,7 @@ export const useWeather = ({ lat, lon, exclude }: UseWeather) => {
 
   // const { token, customerId } = useAuth();
 
-  const uri = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=-${lon}&appid=${key}`;
+  const uri = `https://api.openweathermap.org/data/3.0/onecall?lat=${'10.00'}&lon=-${'92.20'}&appid=${key}`;
 
   return useRequest({ uri });
 };
