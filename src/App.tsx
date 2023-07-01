@@ -1,10 +1,11 @@
 import React, { ReactElement } from 'react';
-import Landing from 'pages/Landing';
+import { router } from 'routes';
+import { RouterProvider } from 'react-router-dom';
 
 const App = (): ReactElement => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-500 to-fuchsia-500">
-      <Landing />;
+    <div className="relative min-h-screen bg-gray-100 shadow dark:bg-gray-800">
+      <RouterProvider router={router} />
     </div>
   );
 };
