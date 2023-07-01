@@ -1,10 +1,14 @@
 import React, { ReactElement } from 'react';
+import useUniqueId from 'hooks/useUniqueId';
 
 type SunsetProps = {
   className?: string;
 };
 
 const Sunset = ({ className }: SunsetProps): ReactElement => {
+  const { id: gradientId, url: gradientUrl } = useUniqueId();
+  const { id: clipPathId, url: clipPathUrl } = useUniqueId();
+  const { id: cId } = useUniqueId();
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +18,7 @@ const Sunset = ({ className }: SunsetProps): ReactElement => {
     >
       <defs>
         <linearGradient
-          id="a"
+          id={gradientId}
           x1="149.99"
           y1="119.24"
           x2="234.01"
@@ -25,13 +29,13 @@ const Sunset = ({ className }: SunsetProps): ReactElement => {
           <stop offset="0.45" stopColor="#fbbf24" />
           <stop offset="1" stopColor="#f59e0b" />
         </linearGradient>
-        <clipPath id="b">
+        <clipPath id={clipPathId}>
           <path
             d="M512,306H296.08a21.5,21.5,0,0,0-14.16,5.32L256,334l-25.92-22.68A21.5,21.5,0,0,0,215.92,306H0V0H512Z"
             fill="none"
           />
         </clipPath>
-        <symbol id="c" viewBox="0 0 384 384">
+        <symbol id={cId} viewBox="0 0 384 384">
           <circle
             cx="192"
             cy="192"
@@ -39,7 +43,7 @@ const Sunset = ({ className }: SunsetProps): ReactElement => {
             stroke="#f8af18"
             strokeMiterlimit="10"
             strokeWidth="6"
-            fill="url(#a)"
+            fill={gradientUrl}
           />
 
           <path
@@ -61,16 +65,16 @@ const Sunset = ({ className }: SunsetProps): ReactElement => {
           </path>
         </symbol>
       </defs>
-      <g clipPath="url(#b)">
-        <use width="384" height="384" transform="translate(64 100)" xlinkHref="#c" />
+      <g clipPath={clipPathUrl}>
+        <use width="384" height="384" transform="translate(64 100)" xlinkHref={`#${cId}`} />
       </g>
       <polyline
         points="128 332 216 332 256 368 296 332 384 332"
         fill="none"
         stroke="#374151"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="18"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="18"
       />
     </svg>
   );

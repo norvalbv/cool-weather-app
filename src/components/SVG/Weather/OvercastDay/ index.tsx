@@ -1,6 +1,10 @@
 import React, { ReactElement } from 'react';
+import useUniqueId from 'hooks/useUniqueId';
 
 const OvercastDay = (): ReactElement => {
+  const { id: gradientId, url: gradientUrl } = useUniqueId();
+  const { id: clipPathId, url: clipPathUrl } = useUniqueId();
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,19 +13,19 @@ const OvercastDay = (): ReactElement => {
     >
       <defs>
         <linearGradient
-          id="a"
+          id={gradientId}
           x1="99.45"
           y1="30.68"
           x2="232.64"
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#f3f7fe" />
-          <stop offset="0.45" stop-color="#f3f7fe" />
-          <stop offset="1" stop-color="#deeafb" />
+          <stop offset="0" stopColor="#f3f7fe" />
+          <stop offset="0.45" stopColor="#f3f7fe" />
+          <stop offset="1" stopColor="#deeafb" />
         </linearGradient>
         <linearGradient
-          id="b"
+          id={clipPathId}
           x1="52.74"
           y1="9.62"
           x2="133.36"
@@ -37,7 +41,7 @@ const OvercastDay = (): ReactElement => {
             d="M.5,93.18a32.44,32.44,0,0,0,32.44,32.44H162.69v-.12c.77,0,1.53.12,2.31.12a34.75,34.75,0,0,0,6.49-68.89A32.38,32.38,0,0,0,123,23.62,48.58,48.58,0,0,0,34.4,60.81c-.49,0-1-.07-1.46-.07A32.44,32.44,0,0,0,.5,93.18Z"
             stroke="#848b98"
             stroke-miterlimit="10"
-            fill="url(#b)"
+            fill={clipPathUrl}
           />
         </symbol>
         <symbol id="e" viewBox="0 0 350 222">
@@ -46,7 +50,7 @@ const OvercastDay = (): ReactElement => {
             stroke="#e6effc"
             stroke-miterlimit="10"
             stroke-width="6"
-            fill="url(#a)"
+            fill={gradientUrl}
           />
         </symbol>
         <symbol id="c" viewBox="0 0 398 222" overflow="visible">
