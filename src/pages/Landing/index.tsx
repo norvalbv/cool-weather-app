@@ -6,6 +6,7 @@ import data from '../../__mocks__/WeatherApiMockData.json';
 import WebStats from 'components/WebStats';
 import Banner from 'components/Banner';
 import WeatherCard from 'components/WeatherCard';
+import ButtonGroup from 'components/ButtonGroup';
 
 const Landing = () => {
   // const { data } = useWeather({ lat: 10, lon: 10 });
@@ -14,9 +15,10 @@ const Landing = () => {
   if (!data) return <Loader />;
 
   return (
-    <div className="h-screen">
+    <div className="relative h-screen">
       {/* <Banner /> */}
       {/* <WebStats /> */}
+      <ButtonGroup className="my-10 flex w-full items-center justify-center" />
       <WeatherCard className="mx-auto my-10" data={data} />
     </div>
   );

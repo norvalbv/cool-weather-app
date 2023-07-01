@@ -1,6 +1,11 @@
 import React, { ReactElement } from 'react';
+import classNames from 'utils/classNames';
 
-const CodeIcon = (): ReactElement => {
+type CodeIconProps = {
+  className?: string;
+};
+
+const CodeIcon = ({ className }: CodeIconProps): ReactElement => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +13,7 @@ const CodeIcon = (): ReactElement => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="h-6 w-6"
+      className={classNames('h-6 w-6', className)}
     >
       <path
         strokeLinecap="round"
