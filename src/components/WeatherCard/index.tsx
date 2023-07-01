@@ -6,8 +6,10 @@ import Toggle from 'components/Toggle';
 import PartlyCloudyDay from 'components/SVG/Weather/PartlyCloudyDay';
 import Sunrise from 'components/SVG/Weather/Sunrise';
 import Sunset from 'components/SVG/Weather/Sunset';
-import Overcast from 'components/SVG/Weather/Overcast/ index';
 import HorizontalTable from 'components/HorizontalTable';
+import OvercastDay from 'components/SVG/Weather/OvercastDay/ index';
+import LightRainDay from 'components/SVG/Weather/LightRainDay';
+import useConvertToTime from 'hooks/useConvertToTime';
 
 type WeatherCardProps = {
   className?: string;
@@ -16,18 +18,22 @@ type WeatherCardProps = {
 
 const weatherIcons = {
   'broken clouds': <PartlyCloudyDay />,
-  'overcast clouds': <Overcast />,
+  'overcast clouds': <OvercastDay />,
+  'light rain': <LightRainDay />,
 };
 
 const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
+  const sunrise = useConvertToTime({ epoch: data.current.sunrise, offset: data.timezone_offset });
+  const sunset = useConvertToTime({ epoch: data.current.sunset, offset: data.timezone_offset });
+
   return (
     <div
       className={classNames(
-        'bg-secondary block h-[28rem] max-w-4xl rounded-lg p-6 shadow-2xl dark:bg-gray-900',
+        'bg-secondary h-[28rem] max-w-4xl rounded-lg p-6 shadow-2xl dark:bg-gray-900',
         className
       )}
     >
-      <div className="items-top flex justify-between">
+      <div className="flex items-center justify-between">
         <h2 className="mb-2 text-xl font-bold tracking-tight text-gray-200">
           Weather Today in {`${data.lat} ${data.lon}`}
         </h2>
@@ -96,13 +102,21 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
               </li>
             </ul>
           </div>
-          <div>
-            <Sunrise className="w-20" />
-            <span className="inline-block">sunrise</span>
-          </div>
-          <div>
-            <Sunset className="w-20" />
-            <span className="inline-block">sunset</span>
+          <div className="text-sm">
+            <div className="flex flex-col items-center ">
+              <Sunrise className="w-14" />
+              <div className="flex gap-2">
+                <span>sunrise</span>
+                <span>{sunrise}</span>
+              </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <Sunset className="w-14" />
+              <div className="flex gap-2">
+                <span>sunset</span>
+                <span>{sunset}</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

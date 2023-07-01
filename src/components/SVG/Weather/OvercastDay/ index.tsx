@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-const Overcast = (): ReactElement => {
+const OvercastDay = (): ReactElement => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -78,4 +78,4 @@ const Overcast = (): ReactElement => {
   );
 };
 
-export default Overcast;
+export default OvercastDay;
