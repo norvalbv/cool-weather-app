@@ -3,9 +3,10 @@ import classNames from 'utils/classNames';
 
 type WeatherCardProps = {
   className?: string;
+  data: object;
 };
 
-const WeatherCard = ({ className }: WeatherCardProps): ReactElement => {
+const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
   return (
     <section
       className={classNames(
@@ -13,9 +14,11 @@ const WeatherCard = ({ className }: WeatherCardProps): ReactElement => {
         className
       )}
     >
-      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-        Noteworthy technology acquisitions 2021
-      </h5>
+      <div className="bg-red-500">
+        <h2 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Weather Today in
+        </h2>
+      </div>
       <p className="font-normal text-gray-700 dark:text-gray-400">
         Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse
         chronological order.

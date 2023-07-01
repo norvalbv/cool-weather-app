@@ -17,7 +17,7 @@ const Landing = () => {
     <div className="h-screen">
       {/* <Banner /> */}
       {/* <WebStats /> */}
-      <WeatherCard className="mx-auto my-10" />
+      <WeatherCard className="mx-auto my-10" data={data} />
     </div>
   );
 };
