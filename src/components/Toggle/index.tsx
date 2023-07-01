@@ -6,7 +6,7 @@ type ToggleProps = {
 };
 
 const Toggle = ({ labelLeft, labelRight }: ToggleProps): ReactElement => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
   return (
     <>
       <label className="mb-5 flex items-center gap-2">
