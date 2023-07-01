@@ -3,9 +3,10 @@ import classNames from 'utils/classNames';
 
 type CodeIconProps = {
   className?: string;
+  tabIndex?: number;
 };
 
-const CodeIcon = ({ className }: CodeIconProps): ReactElement => {
+const CodeIcon = ({ className, tabIndex }: CodeIconProps): ReactElement => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,6 +15,7 @@ const CodeIcon = ({ className }: CodeIconProps): ReactElement => {
       strokeWidth={1.5}
       stroke="currentColor"
       className={classNames('h-6 w-6', className)}
+      tabIndex={tabIndex}
     >
       <path
         strokeLinecap="round"

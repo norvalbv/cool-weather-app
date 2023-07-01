@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import CodeIcon from 'components/SVG/CodeIcon';
 import { WeatherApiData } from 'types';
 import classNames from 'utils/classNames';
+import Toggle from 'components/Toggle';
 
 type WeatherCardProps = {
   className?: string;
@@ -12,7 +13,7 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
   return (
     <div
       className={classNames(
-        'bg-primary block h-[28rem] max-w-4xl rounded-lg border p-6 shadow dark:border-gray-800 dark:bg-gray-900',
+        'bg-secondary block h-[28rem] max-w-4xl rounded-lg border p-6 shadow dark:border-gray-800 dark:bg-gray-900',
         className
       )}
     >
@@ -25,15 +26,27 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <CodeIcon className="cursor-pointer rounded-lg border bg-gray-200 p-1 hover:bg-gray-600" />
+          <CodeIcon
+            tabIndex={1}
+            className="cursor-pointer rounded-lg border bg-gray-500 p-1 hover:bg-gray-200 focus:ring-4 focus:ring-blue-300"
+          />
         </a>
       </div>
       <section
         className={classNames(
-          'bg-secondary block h-[14rem] w-full rounded-lg  p-6 shadow-lg',
+          'bg-primary h-[14rem] w-full rounded-lg px-4 py-2 shadow-lg',
           className
         )}
-      ></section>
+      >
+        <div className="flex items-baseline justify-between">
+          <span className="inline-block">Current Weather</span>
+          <Toggle labelLeft="C" labelRight="F" />
+        </div>
+        <div className="flex items-center">
+          <div className="flex-1"></div>
+          <div className="flex-1"></div>
+        </div>
+      </section>
     </div>
   );
 };
