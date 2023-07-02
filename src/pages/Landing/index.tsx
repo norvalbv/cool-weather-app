@@ -5,11 +5,11 @@ import data from '__mocks__/WeatherApiMockData.json';
 import WebStats from 'components/WebStats';
 import WeatherCard from 'components/WeatherCard';
 import ButtonGroup from 'components/ButtonGroup';
-import { WeatherApiData } from 'types';
+import { ButtonGroupKeys, WeatherApiData } from 'types';
 
 const Landing = () => {
   // const { data } = useWeather({ lat: 10, lon: 10 });
-  const [weather, setWeather] = useState('current-weather');
+  const [weather, setWeather] = useState<ButtonGroupKeys>('current-weather');
 
   if (!data) return <Loader />;
 

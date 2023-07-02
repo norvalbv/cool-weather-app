@@ -1,14 +1,15 @@
 import React, { ReactElement } from 'react';
+import { ButtonGroupKeys } from 'types';
 import classNames from 'utils/classNames';
 
 type ButtonGroupProps = {
   className?: string;
-  onclick: (arg: string) => void;
-  activeKey: string;
+  onclick: (arg: ButtonGroupKeys) => void;
+  activeKey: ButtonGroupKeys;
 };
 
 const ButtonGroup = ({ className, onclick, activeKey }: ButtonGroupProps): ReactElement => {
-  const handleClick = (key: string): void => {
+  const handleClick = (key: ButtonGroupKeys): void => {
     onclick(key);
   };
 

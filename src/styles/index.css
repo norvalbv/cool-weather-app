@@ -9,8 +9,4 @@
   .bg-secondary {
     @apply bg-gradient-to-br from-violet-700 to-violet-400;
   }
-
-  .text-secondary {
-    @apply text-violet-700;
-  }
 }

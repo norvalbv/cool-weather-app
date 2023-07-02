@@ -8,7 +8,7 @@ import Sunset from 'components/SVG/Weather/Sunset';
 import HorizontalTable from 'components/HorizontalTable';
 import { weatherIcons } from 'components/constants/weatherIcons';
 import HourlyWeather from './HourlyWeather';
-import convertEpochToTime from 'utils/convertToTime';
+import { convertEpochTo24HrTime } from 'utils/convertToTime';
 import fahrenheitToCelsius from 'utils/fahrenheitToCelcuis';
 
 type WeatherCardProps = {
@@ -28,7 +28,8 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
     >
       <div className="flex items-center justify-between">
         <h2 className="mb-2 text-xl font-bold tracking-tight text-gray-200">
-          Weather Today in {`${data.lat} ${data.lon}`}
+          Weather {weather === 'current-weather' ? 'Today' : 'Over the Next Few days'} in&nbsp;
+          {`${data.lat} ${data.lon}`}
         </h2>
         <div className="group flex items-center justify-center gap-2">
           <p className="text-sm text-white opacity-0 group-hover:opacity-100">View Code</p>
@@ -51,9 +52,11 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
           <div className="divide-y divide-violet-700">
             <span className="block">
               Current Time:&nbsp;
-              {convertEpochToTime({ epoch: data.current.dt, offset: data.timezone_offset })}
+              {convertEpochTo24HrTime({ epoch: data.current.dt, offset: data.timezone_offset })}
             </span>
-            <span className="block">Current Weather:</span>
+            <span className="block">
+              {weather === 'current-weather' ? 'Current' : 'Forecast'} Weather:
+            </span>
           </div>
           <Toggle
             labelLeft="F"
@@ -118,7 +121,7 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
               <div className="flex gap-2">
                 <span>sunrise</span>
                 <span>
-                  {convertEpochToTime({
+                  {convertEpochTo24HrTime({
                     epoch: data.current.sunrise,
                     offset: data.timezone_offset,
                   })}
@@ -130,7 +133,10 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
               <div className="flex gap-2">
                 <span>sunset</span>
                 <span>
-                  {convertEpochToTime({ epoch: data.current.sunset, offset: data.timezone_offset })}
+                  {convertEpochTo24HrTime({
+                    epoch: data.current.sunset,
+                    offset: data.timezone_offset,
+                  })}
                 </span>
               </div>
             </div>

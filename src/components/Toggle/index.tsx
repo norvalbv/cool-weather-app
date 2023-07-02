@@ -15,7 +15,7 @@ const Toggle = ({ labelLeft, labelRight, onclick, isChecked }: ToggleProps): Rea
     <>
       <label className="mb-5 flex items-center gap-2">
         {labelLeft && (
-          <span className={!isChecked ? 'text-secondary underline' : ''}>{labelLeft}</span>
+          <span className={!isChecked ? 'text-violet-700 underline' : ''}>{labelLeft}</span>
         )}
         <div className="relative inline-flex cursor-pointer items-center">
           <input type="checkbox" className="peer sr-only" />
@@ -25,7 +25,7 @@ const Toggle = ({ labelLeft, labelRight, onclick, isChecked }: ToggleProps): Rea
           ></div>
         </div>
         {labelRight && (
-          <span className={isChecked ? 'text-secondary underline' : ''}>{labelRight}</span>
+          <span className={isChecked ? 'text-violet-700 underline' : ''}>{labelRight}</span>
         )}
       </label>
     </>
