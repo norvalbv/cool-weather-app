@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
 
-const Layout = () => {
+const Layout = (): ReactElement => {
   return (
-    <>
+    <div className="min-h-screen">
       <NavBar />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ import WeatherCard from 'components/WeatherCard';
 import ButtonGroup from 'components/ButtonGroup';
 
 const Landing = () => {
-  const { data } = useWeather({ lat: 10, lon: 10 });
+  // const { data } = useWeather({ lat: 10, lon: 10 });
   console.log(data);
 
   if (!data) return <Loader />;

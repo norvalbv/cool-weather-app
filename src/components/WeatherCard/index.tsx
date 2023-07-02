@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import CodeIcon from 'components/SVG/CodeIcon';
 import { WeatherApiData } from 'types';
 import classNames from 'utils/classNames';
@@ -9,6 +9,7 @@ import HorizontalTable from 'components/HorizontalTable';
 import { weatherIcons } from 'components/constants/weatherIcons';
 import HourlyWeather from './HourlyWeather';
 import convertEpochToTime from 'utils/convertToTime';
+import fahrenheitToCelsius from 'utils/FahrenheitToCelcuis';
 
 type WeatherCardProps = {
   className?: string;
@@ -16,6 +17,7 @@ type WeatherCardProps = {
 };
 
 const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
+  const [isCelsius, setIsCelsius] = useState(false);
   return (
     <div
       className={classNames(
@@ -49,13 +51,20 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
             </span>
             <span className="block">Current Weather:</span>
           </div>
-          <Toggle labelLeft="C" labelRight="F" />
+          <Toggle
+            labelLeft="C"
+            labelRight="F"
+            onclick={(): void => setIsCelsius(!isCelsius)}
+            isChecked={isCelsius}
+          />
         </div>
         <div className="flex flex-col items-center gap-8 lg:flex-row">
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-8 md:w-96">
             <div className="h-32 w-32">{weatherIcons[data.current.weather[0].description]}</div>
             <div>
-              <h2 className="text-3xl">{data.current.temp}&deg;</h2>
+              <h2 className="text-3xl">
+                {isCelsius ? fahrenheitToCelsius(data.current.temp) : data.current.temp}&deg;
+              </h2>
               <span className="mb-4 inline-block capitalize">
                 {data.current.weather[0].description}
               </span>
@@ -66,7 +75,11 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
               <li>
                 <HorizontalTable
                   title="Feels Like"
-                  value={data.current.feels_like}
+                  value={
+                    isCelsius
+                      ? fahrenheitToCelsius(data.current.feels_like)
+                      : data.current.feels_like
+                  }
                   valueSymbol="°"
                 />
               </li>
@@ -120,9 +133,15 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
           </div>
         </div>
       </section>
-      <section className="bg-primary mt-4 w-full rounded-lg px-4 py-2 shadow-lg">
-        <HourlyWeather data={data.hourly} timezoneOffset={data.timezone_offset} />
-      </section>
+      {data.hourly.length >= 2 && (
+        <section className="bg-primary mt-4 w-full rounded-lg px-4 py-2 shadow-lg">
+          <HourlyWeather
+            data={data.hourly}
+            timezoneOffset={data.timezone_offset}
+            isCelsuis={isCelsius}
+          />
+        </section>
+      )}
     </div>
   );
 };
