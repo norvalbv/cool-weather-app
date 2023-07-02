@@ -29,16 +29,19 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
         <h2 className="mb-2 text-xl font-bold tracking-tight text-gray-200">
           Weather Today in {`${data.lat} ${data.lon}`}
         </h2>
-        <a
-          href="https://github.com/norvalbv/cool-weather-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <CodeIcon
-            tabIndex={1}
-            className="cursor-pointer rounded-lg border bg-gray-500 p-1 hover:bg-gray-200 focus:ring-4 focus:ring-blue-300"
-          />
-        </a>
+        <div className="group flex items-center justify-center gap-2">
+          <p className="text-sm text-white opacity-0 group-hover:opacity-100">View Code</p>
+          <a
+            href="https://github.com/norvalbv/cool-weather-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <CodeIcon
+              tabIndex={1}
+              className="cursor-pointer rounded-lg border bg-gray-500 p-1 hover:bg-gray-200 focus:ring-4 focus:ring-blue-300"
+            />
+          </a>
+        </div>
       </div>
       <section
         className={classNames('bg-primary w-full rounded-lg px-4 py-2 shadow-lg', className)}
