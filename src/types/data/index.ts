@@ -26,7 +26,7 @@ export type WeatherApiData = {
   alerts?: object[];
   current: CurrentWeather;
   daily: object[];
-  hourly: object[];
+  hourly: CurrentWeather[];
   minutely: object[];
   timezone: string;
   timezone_offset: number;

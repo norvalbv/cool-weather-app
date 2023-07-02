@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { weatherIcons } from 'components/constants/weatherIcons';
 import { CurrentWeather } from 'types';
 import convertEpochToTime from 'utils/convertToTime';
-import fahrenheitToCelsius from 'utils/FahrenheitToCelcuis';
+import fahrenheitToCelsius from 'utils/fahrenheitToCelcuis';
 
 type HourlyWeatherProps = {
   data: CurrentWeather[];

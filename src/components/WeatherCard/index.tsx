@@ -9,14 +9,15 @@ import HorizontalTable from 'components/HorizontalTable';
 import { weatherIcons } from 'components/constants/weatherIcons';
 import HourlyWeather from './HourlyWeather';
 import convertEpochToTime from 'utils/convertToTime';
-import fahrenheitToCelsius from 'utils/FahrenheitToCelcuis';
+import fahrenheitToCelsius from 'utils/fahrenheitToCelcuis';
 
 type WeatherCardProps = {
   className?: string;
   data: WeatherApiData;
+  weather: string;
 };
 
-const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
+const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactElement => {
   const [isCelsius, setIsCelsius] = useState(false);
   return (
     <div
@@ -55,8 +56,8 @@ const WeatherCard = ({ className, data }: WeatherCardProps): ReactElement => {
             <span className="block">Current Weather:</span>
           </div>
           <Toggle
-            labelLeft="C"
-            labelRight="F"
+            labelLeft="F"
+            labelRight="C"
             onclick={(): void => setIsCelsius(!isCelsius)}
             isChecked={isCelsius}
           />
