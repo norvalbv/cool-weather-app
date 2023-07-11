@@ -248,18 +248,20 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
             <section className="bg-primary mt-4 w-full rounded-lg px-4 py-2 shadow-lg">
               <h2 className="mb-4 text-xl font-light tracking-wider">Hourly Forecast</h2>
               <RowWeatherCard
-                data={data.hourly.slice(1, 7)}
+                data={data.hourly.slice(1, 8)}
                 timezoneOffset={data.timezone_offset}
                 isCelsius={isCelsius}
+                type="hourly"
               />
             </section>
           )}
           <section className="bg-primary mt-4 w-full rounded-lg px-4 py-2 shadow-lg">
             <h2 className="mb-4 text-xl font-light tracking-wider">Daily Forecast</h2>
             <RowWeatherCard
-              data={data.daily.slice(0, 5)}
+              data={data.daily.slice(1, 8)}
               timezoneOffset={data.timezone_offset}
               isCelsius={isCelsius}
+              type="daily"
             />
           </section>
         </>
