@@ -110,7 +110,7 @@ const ForecastCard = ({ data, isCelsius, timezoneOffset }: ForecastCardProps): R
         const averageDailyTemp = tempValidator(weather.temp);
 
         return (
-          <div className="relative py-4">
+          <div className="relative py-4" key={`${weather.dt}_${idx}`}>
             <h2 className="absolute left-4 top-4 text-xl tracking-wider">
               Date:&nbsp;
               {convertToDate(weather.dt * 1000, false, { type: 'short' })}
@@ -194,8 +194,8 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
     >
       <div className="flex items-center justify-between">
         <h2 className="mb-2 text-xl font-bold tracking-tight text-gray-200">
-          Weather {weather === 'current-weather' ? 'Today' : 'Over the Next Few days'} in&nbsp;
-          {`${data.lat} ${data.lon}`}
+          Weather {weather === 'current-weather' ? 'Today' : 'Over the Next Few days'} in:&nbsp;
+          Lat&nbsp;{data.lat}, Lon&nbsp;{data.lon}.
         </h2>
         <div className="group flex items-center justify-center gap-2">
           <p className="text-sm text-white opacity-0 group-hover:opacity-100">View Code</p>

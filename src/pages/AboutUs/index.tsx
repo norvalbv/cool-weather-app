@@ -4,7 +4,7 @@ import CardWrapper from 'components/CardWrapper';
 const AboutUs = (): ReactElement => {
   return (
     <CardWrapper>
-      <div className="max-w-96 mt-10 text-center">
+      <div className="max-w-96 mt-10 text-center dark:text-white">
         <h1 className="mb-10 text-3xl text-violet-700 underline underline-offset-8">
           About This Project
         </h1>

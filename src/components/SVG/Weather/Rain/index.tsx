@@ -64,7 +64,7 @@ const Rain = (): ReactElement => {
             d="M291,107c-.85,0-1.68.09-2.53.13A83.9,83.9,0,0,0,135.6,42.92,55.91,55.91,0,0,0,51,91a56.56,56.56,0,0,0,.8,9.08A60,60,0,0,0,63,219c1.35,0,2.67-.11,4-.2v.2H291a56,56,0,0,0,0-112Z"
             stroke="#e6effc"
             strokeMiterlimit="10"
-            stroke-width="6"
+            strokeWidth="6"
             fill={aUrl}
           />
         </symbol>
