@@ -1,4 +1,6 @@
 import React, { ReactElement } from 'react';
+import SunIcon from 'components/SVG/Theme/SunIcon';
+import MoonIcon from 'components/SVG/Theme/MoonIcon';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'utils/classNames';
 
@@ -15,7 +17,12 @@ const NavBar = (): ReactElement => {
           </span>
         </Link>
         <div className="flex items-center justify-between" id="navbar-search">
-          <ul className="mt-0 flex rounded-lg border-gray-100 p-0 font-medium dark:border-gray-700 dark:bg-gray-800">
+          {true ? (
+            <SunIcon className="cursor-pointer" onClick={(): void => alert('test')} />
+          ) : (
+            <MoonIcon className="cursor-pointer" onClick={(): void => alert('test')} />
+          )}
+          <ul className="mt-0 flex rounded-lg border-gray-100 p-0 font-medium">
             <li>
               <Link
                 to="/"

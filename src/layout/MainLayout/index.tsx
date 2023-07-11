@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 const Layout = (): ReactElement => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-800">
       <NavBar />
       <Outlet />
       <Footer />

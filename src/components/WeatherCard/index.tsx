@@ -188,7 +188,7 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
   return (
     <div
       className={classNames(
-        'bg-secondary max-w-4xl rounded-lg p-6 shadow-2xl dark:bg-gray-900',
+        'bg-secondary max-w-4xl rounded-lg p-6 shadow-2xl dark:bg-gray-900 dark:text-gray-200',
         className
       )}
     >

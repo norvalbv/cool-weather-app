@@ -1,10 +1,11 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { router } from 'routes';
 import { RouterProvider } from 'react-router-dom';
 
 const App = (): ReactElement => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
   return (
-    <div className="relative bg-gray-100 dark:bg-gray-800">
+    <div className="relative">
       <RouterProvider router={router} />
     </div>
   );
