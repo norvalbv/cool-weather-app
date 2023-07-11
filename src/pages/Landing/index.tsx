@@ -21,7 +21,7 @@ const Landing = () => {
         onclick={(key): void => setWeather(key)}
         activeKey={weather}
       />
-      <WeatherCard className="mx-auto" data={data as WeatherApiData} weather={weather} />
+      <WeatherCard className="mx-auto" data={data as unknown as WeatherApiData} weather={weather} />
     </div>
   );
 };
