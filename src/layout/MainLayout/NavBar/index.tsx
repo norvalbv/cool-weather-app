@@ -3,11 +3,13 @@ import SunIcon from 'components/SVG/Theme/SunIcon';
 import MoonIcon from 'components/SVG/Theme/MoonIcon';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'utils/classNames';
+import useTheme from 'hooks/useTheme';
 
 const NavBar = (): ReactElement => {
   const location = useLocation();
   const { pathname } = location;
 
+  const { toggleDarkMode, isDarkMode } = useTheme();
   return (
     <nav className="bg-primary shadow">
       <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between p-4">
@@ -17,10 +19,10 @@ const NavBar = (): ReactElement => {
           </span>
         </Link>
         <div className="flex items-center justify-between" id="navbar-search">
-          {true ? (
-            <SunIcon className="cursor-pointer" onClick={(): void => alert('test')} />
+          {isDarkMode ? (
+            <MoonIcon className="cursor-pointer" onClick={toggleDarkMode} />
           ) : (
-            <MoonIcon className="cursor-pointer" onClick={(): void => alert('test')} />
+            <SunIcon className="cursor-pointer" onClick={toggleDarkMode} />
           )}
           <ul className="mt-0 flex rounded-lg border-gray-100 p-0 font-medium">
             <li>

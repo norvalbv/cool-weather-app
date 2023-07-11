@@ -11,7 +11,7 @@ const MoonIcon = ({ className, ...props }: MoonIconProps): ReactElement => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke="currentColor"
+      stroke="#D4D4D4"
       className={classNames('h-6 w-6', className)}
       {...props}
     >

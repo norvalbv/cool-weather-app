@@ -20,8 +20,8 @@ const ButtonGroup = ({ className, onclick, activeKey }: ButtonGroupProps): React
         type="button"
         aria-current="page"
         className={classNames(
-          'w-40 rounded-l-lg border border-gray-200 bg-white py-4 text-sm font-medium hover:bg-gray-100 focus:z-10 focus:text-violet-700 focus:ring-2 focus:ring-violet-700 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-violet-500',
-          { 'text-violet-700': activeKey === 'current-weather' }
+          'w-40 rounded-l-lg border border-gray-200 bg-white py-4 text-sm font-medium hover:bg-gray-100 focus:z-10 focus:text-violet-700 focus:ring-2 focus:ring-violet-700 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-violet-500',
+          activeKey === 'current-weather' ? 'text-violet-700' : 'dark:text-white'
         )}
       >
         Current Weather
@@ -30,8 +30,8 @@ const ButtonGroup = ({ className, onclick, activeKey }: ButtonGroupProps): React
         onClick={(): void => handleClick('forecast')}
         type="button"
         className={classNames(
-          'w-40 rounded-r-md border border-gray-200 bg-white py-4 text-sm font-medium hover:bg-gray-100 hover:text-violet-700 focus:z-10 focus:text-violet-700 focus:ring-2 focus:ring-violet-700 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-violet-500',
-          { 'text-violet-700': activeKey === 'forecast' }
+          'w-40 rounded-r-md border border-gray-200 bg-white py-4 text-sm font-medium hover:bg-gray-100 hover:text-violet-700 focus:z-10 focus:text-violet-700 focus:ring-2 focus:ring-violet-700 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-violet-500',
+          activeKey === 'forecast' ? 'text-violet-700' : 'dark:text-white'
         )}
       >
         7 day Forecast
