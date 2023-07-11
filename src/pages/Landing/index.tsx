@@ -17,7 +17,7 @@ const Landing = () => {
   return (
     <div className="relative mx-auto max-w-4xl">
       <ButtonGroup
-        className="my-10 flex w-full items-center justify-center"
+        className="mb-2 mt-10 flex w-full items-center justify-center"
         onclick={(key): void => setWeather(key)}
         activeKey={weather}
       />
