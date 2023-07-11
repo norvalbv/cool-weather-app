@@ -7,9 +7,10 @@ import Sunrise from 'components/SVG/Weather/Sunrise';
 import Sunset from 'components/SVG/Weather/Sunset';
 import HorizontalTable from 'components/HorizontalTable';
 import { weatherIcons } from 'components/constants/weatherIcons';
-import HourlyWeather from './HourlyWeather';
+import RowWeatherCard from './RowWeatherCard';
 import { convertEpochTo24HrTime } from 'utils/convertToTime';
 import fahrenheitToCelsius from 'utils/fahrenheitToCelcuis';
+import tempValidator from 'utils/tempValidator';
 
 type CurrentCardProps = {
   data: CurrentWeather;
@@ -18,13 +19,14 @@ type CurrentCardProps = {
 };
 
 const CurrentCard = ({ data, isCelsius, timezone_offset }: CurrentCardProps): ReactElement => {
+  const processedTemperature = tempValidator(data.temp);
   return (
     <div className="flex flex-col items-center gap-8 lg:flex-row">
       <div className="flex items-center gap-8 md:w-96">
         <div className="h-32 w-32">{weatherIcons[data.weather[0].description]}</div>
         <div>
           <h2 className="text-3xl">
-            {isCelsius ? fahrenheitToCelsius(data.temp) : data.temp}&deg;
+            {isCelsius ? fahrenheitToCelsius(processedTemperature) : processedTemperature}&deg;
           </h2>
           <span className="mb-4 inline-block capitalize">{data.weather[0].description}</span>
         </div>
@@ -105,14 +107,7 @@ const ForecastCard = ({ data, isCelsius, timezoneOffset }: ForecastCardProps): R
   return (
     <div className="flex flex-col divide-y divide-violet-700">
       {processedData.map((weather, idx) => {
-        console.log(processedData, isCelsius ? fahrenheitToCelsius(weather.temp) : weather.temp);
-
-        const averageDailyTemp = Number(
-          (
-            Object.values(weather.temp).reduce((acc, temp) => acc + temp, 0) /
-            Object.values(weather.temp).length
-          ).toFixed(2)
-        );
+        const averageDailyTemp = tempValidator(weather.temp);
 
         return (
           <div
@@ -249,8 +244,8 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
           {data.hourly.length >= 2 && (
             <section className="bg-primary mt-4 w-full rounded-lg px-4 py-2 shadow-lg">
               <h2 className="mb-4 text-xl font-light tracking-wider">Hourly Forecast</h2>
-              <HourlyWeather
-                data={data.hourly}
+              <RowWeatherCard
+                data={data.hourly.slice(1, 7)}
                 timezoneOffset={data.timezone_offset}
                 isCelsius={isCelsius}
               />
@@ -258,8 +253,8 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
           )}
           <section className="bg-primary mt-4 w-full rounded-lg px-4 py-2 shadow-lg">
             <h2 className="mb-4 text-xl font-light tracking-wider">Daily Forecast</h2>
-            <HourlyWeather
-              data={data.daily}
+            <RowWeatherCard
+              data={data.daily.slice(0, 5)}
               timezoneOffset={data.timezone_offset}
               isCelsius={isCelsius}
             />

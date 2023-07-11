@@ -1,5 +1,14 @@
 type Weather = { description: string; icon: string; id: number; main: string };
 
+export type Temperature = {
+  day: number;
+  min: number;
+  max: number;
+  night: number;
+  eve: number;
+  morn: number;
+};
+
 export type WeatherBase = {
   clouds: number;
   dew_point: number;
@@ -7,7 +16,7 @@ export type WeatherBase = {
   feels_like: number;
   humidity: number;
   pressure: number;
-  temp: number;
+  temp: Temperature | number;
   uvi: number;
   visibility: number;
   weather: Weather[];
@@ -23,14 +32,7 @@ export type DailyWeather = {
   moonset: number;
   moon_phase: number;
   summary: string;
-  temp: {
-    day: number;
-    min: number;
-    max: number;
-    night: number;
-    eve: number;
-    morn: number;
-  };
+  temp: Temperature;
   feels_like: {
     day: number;
     night: number;
