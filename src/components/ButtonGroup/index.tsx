@@ -34,7 +34,7 @@ const ButtonGroup = ({ className, onclick, activeKey }: ButtonGroupProps): React
           { 'text-violet-700': activeKey === 'forecast' }
         )}
       >
-        10 day Forecast
+        7 day Forecast
       </button>
     </div>
   );

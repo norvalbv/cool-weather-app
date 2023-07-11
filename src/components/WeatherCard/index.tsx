@@ -102,7 +102,7 @@ type ForecastCardProps = {
 };
 
 const ForecastCard = ({ data, isCelsius, timezoneOffset }: ForecastCardProps): ReactElement => {
-  const processedData = data.slice(0, 9);
+  const processedData = data.slice(1, 8);
 
   return (
     <div className="flex flex-col divide-y divide-violet-700">
@@ -125,7 +125,10 @@ const ForecastCard = ({ data, isCelsius, timezoneOffset }: ForecastCardProps): R
                   </span>
                 </div>
               </div>
-              <p>{weather.summary}</p>
+              <div className="flex w-40 flex-col items-center justify-center gap-2 text-center">
+                <p className="font-semibold">Summary:</p>
+                <p>{weather.summary}</p>
+              </div>
               <div className="flex gap-8 text-sm lg:flex-col lg:gap-0">
                 <div className="flex flex-col items-center ">
                   <Sunrise className="w-14" />
@@ -214,7 +217,7 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
         <div className="flex items-baseline justify-between p-2">
           <div className="divide-y divide-violet-700">
             <span className="block text-xl font-light tracking-wider">
-              {weather === 'current-weather' ? 'Current Weather' : '10 Day Forecast'}
+              {weather === 'current-weather' ? 'Current Weather' : '7 Day Forecast'}
             </span>
             <span className="block">
               Current Time:&nbsp;
