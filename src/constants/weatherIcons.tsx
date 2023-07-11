@@ -8,4 +8,5 @@ export const weatherIcons: { [key: string]: JSX.Element } = {
   'overcast clouds': <OvercastDay />,
   'light rain': <LightRainDay />,
   'moderate rain': <Rain />,
+  'scattered clouds': <PartlyCloudyDay />,
 };
