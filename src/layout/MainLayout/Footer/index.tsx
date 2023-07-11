@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = (): ReactElement => {
   return (
-    <footer className="absolute bottom-0 m-4 w-full max-w-[calc(100vw-2rem)] rounded-lg bg-white shadow dark:bg-gray-900">
+    <footer className="m-4 w-full max-w-[calc(100vw-2rem)] rounded-lg bg-white shadow dark:bg-gray-900">
       <div className="mx-auto w-full max-w-screen-xl p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Link to="/" className="flex items-center">
