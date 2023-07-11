@@ -16,7 +16,7 @@ export type WeatherBase = {
   wind_speed: number;
 };
 
-type DailyWeather = {
+export type DailyWeather = {
   sunrise: number;
   sunset: number;
   moonrise: number;
@@ -46,7 +46,7 @@ type HourlyWeather = {
   rain?: { [key: string]: number };
 } & WeatherBase;
 
-type CurrentWeather = {
+export type CurrentWeather = {
   sunrise: number;
   sunset: number;
 } & WeatherBase;

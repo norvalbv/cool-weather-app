@@ -119,7 +119,7 @@ const LightRainDay = (): ReactElement => {
       <path
         d="M200,376a8,8,0,0,1-8-8V356a8,8,0,0,1,16,0v12A8,8,0,0,1,200,376Z"
         stroke="#0a5ad4"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         fill={cUrl}
         opacity="0"
       >
@@ -175,7 +175,7 @@ const LightRainDay = (): ReactElement => {
       <path
         d="M312,376a8,8,0,0,1-8-8V356a8,8,0,0,1,16,0v12A8,8,0,0,1,312,376Z"
         stroke="#0a5ad4"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         fill={eUrl}
         opacity="0"
       >

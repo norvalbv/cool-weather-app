@@ -23,9 +23,9 @@ const PartlyCloudyDay = (): ReactElement => {
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#f3f7fe" />
-          <stop offset="0.45" stop-color="#f3f7fe" />
-          <stop offset="1" stop-color="#deeafb" />
+          <stop offset="0" stopColor="#f3f7fe" />
+          <stop offset="0.45" stopColor="#f3f7fe" />
+          <stop offset="1" stopColor="#deeafb" />
         </linearGradient>
         <linearGradient
           id={bId}
@@ -35,9 +35,9 @@ const PartlyCloudyDay = (): ReactElement => {
           y2="132.65"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#fbbf24" />
-          <stop offset="0.45" stop-color="#fbbf24" />
-          <stop offset="1" stop-color="#f59e0b" />
+          <stop offset="0" stopColor="#fbbf24" />
+          <stop offset="0.45" stopColor="#fbbf24" />
+          <stop offset="1" stopColor="#f59e0b" />
         </linearGradient>
         <symbol id={dId} viewBox="0 0 196 196">
           <circle
@@ -54,9 +54,9 @@ const PartlyCloudyDay = (): ReactElement => {
             d="M98,31.38V6m0,184V164.62M145.11,50.89,163.05,33M33,163.05l17.94-17.94m0-94.22L33,33m130.1,130.1-17.94-17.94M6,98H31.38M190,98H164.62"
             fill="none"
             stroke="#fbbf24"
-            stroke-linecap="round"
-            stroke-miterlimit="10"
-            stroke-width="12"
+            strokeLinecap="round"
+            strokeMiterlimit="10"
+            strokeWidth="12"
           >
             <animateTransform
               attributeName="transform"

@@ -42,8 +42,8 @@ const Sunrise = ({ className }: SunriseProps): ReactElement => {
             cy="192"
             r="84"
             stroke="#f8af18"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill={gradientUrl}
           />
 

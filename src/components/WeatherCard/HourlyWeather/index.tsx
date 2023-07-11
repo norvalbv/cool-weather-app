@@ -7,18 +7,21 @@ import fahrenheitToCelsius from 'utils/fahrenheitToCelcuis';
 type HourlyWeatherProps = {
   data: WeatherBase[];
   timezoneOffset: number;
-  isCelsuis: boolean;
+  isCelsius: boolean;
 };
 
-const HourlyWeather = ({ data, timezoneOffset, isCelsuis }: HourlyWeatherProps): ReactElement => {
+const HourlyWeather = ({ data, timezoneOffset, isCelsius }: HourlyWeatherProps): ReactElement => {
   const processedData = data.slice(1, 8);
   return (
     <div className="flex flex-wrap divide-violet-700 md:flex-nowrap md:divide-x">
-      {processedData.map((weather) => (
-        <div className="flex w-32 flex-col items-center justify-center gap-1">
+      {processedData.map((weather, idx) => (
+        <div
+          className="flex w-32 flex-col items-center justify-center gap-1"
+          key={`${weather.dt}_${idx}`}
+        >
           <span>{convertEpochTo24HrTime({ epoch: weather.dt, offset: timezoneOffset })}</span>
           <div className="w-20">{weatherIcons[weather.weather[0].description]}</div>
-          <span>{isCelsuis ? fahrenheitToCelsius(weather.temp) : weather.temp}&deg;</span>
+          {/* <span>{isCelsius ? fahrenheitToCelsius(weather.temp) : weather.temp}&deg;</span> */}
         </div>
       ))}
     </div>

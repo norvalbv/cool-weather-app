@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 import CodeIcon from 'components/SVG/CodeIcon';
-import { WeatherApiData } from 'types';
+import { CurrentWeather, DailyWeather, WeatherApiData } from 'types';
 import classNames from 'utils/classNames';
 import Toggle from 'components/Toggle';
 import Sunrise from 'components/SVG/Weather/Sunrise';
@@ -10,6 +10,171 @@ import { weatherIcons } from 'components/constants/weatherIcons';
 import HourlyWeather from './HourlyWeather';
 import { convertEpochTo24HrTime } from 'utils/convertToTime';
 import fahrenheitToCelsius from 'utils/fahrenheitToCelcuis';
+
+type CurrentCardProps = {
+  data: CurrentWeather;
+  isCelsius: boolean;
+  timezone_offset: number;
+};
+
+const CurrentCard = ({ data, isCelsius, timezone_offset }: CurrentCardProps): ReactElement => {
+  return (
+    <div className="flex flex-col items-center gap-8 lg:flex-row">
+      <div className="flex items-center gap-8 md:w-96">
+        <div className="h-32 w-32">{weatherIcons[data.weather[0].description]}</div>
+        <div>
+          <h2 className="text-3xl">
+            {isCelsius ? fahrenheitToCelsius(data.temp) : data.temp}&deg;
+          </h2>
+          <span className="mb-4 inline-block capitalize">{data.weather[0].description}</span>
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col gap-4 sm:flex-row sm:gap-16">
+        <ul className="divide-y divide-violet-700 capitalize">
+          <li>
+            <HorizontalTable
+              title="Feels Like"
+              value={isCelsius ? fahrenheitToCelsius(data.feels_like) : data.feels_like}
+              valueSymbol="°"
+            />
+          </li>
+          <li>
+            <HorizontalTable title="Humidity" value={data.humidity} valueSymbol="%" />
+          </li>
+          <li>
+            <HorizontalTable title="Pressue" value={data.pressure} />
+          </li>
+          <li>
+            <HorizontalTable title="UVI" value={data.uvi} />
+          </li>
+        </ul>
+        <ul className="divide-y divide-violet-700 capitalize">
+          <li>
+            <HorizontalTable title="Clouds" value={data.clouds} valueSymbol="%" />
+          </li>
+          <li>
+            <HorizontalTable title="Wind" value={data.wind_deg} />
+          </li>
+          <li>
+            <HorizontalTable title="Wind Gust" value={data.wind_gust} />
+          </li>
+          <li>
+            <HorizontalTable title="Wind Speed" value={data.wind_speed} />
+          </li>
+        </ul>
+      </div>
+      <div className="flex gap-8 text-sm lg:flex-col lg:gap-0">
+        <div className="flex flex-col items-center ">
+          <Sunrise className="w-14" />
+          <div className="flex gap-2">
+            <span>sunrise</span>
+            <span>
+              {convertEpochTo24HrTime({
+                epoch: data.sunrise,
+                offset: timezone_offset,
+              })}
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col items-center">
+          <Sunset className="w-14" />
+          <div className="flex gap-2">
+            <span>sunset</span>
+            <span>
+              {convertEpochTo24HrTime({
+                epoch: data.sunset,
+                offset: timezone_offset,
+              })}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+type ForecastCardProps = {
+  data: DailyWeather[];
+  isCelsius: boolean;
+  timezoneOffset: number;
+};
+
+const ForecastCard = ({ data, isCelsius, timezoneOffset }: ForecastCardProps): ReactElement => {
+  const processedData = data.slice(0, 9);
+
+  return (
+    <div className="flex flex-col divide-y divide-violet-700">
+      {processedData.map((weather, idx) => {
+        console.log(processedData, isCelsius ? fahrenheitToCelsius(weather.temp) : weather.temp);
+
+        const averageDailyTemp = Number(
+          (
+            Object.values(weather.temp).reduce((acc, temp) => acc + temp, 0) /
+            Object.values(weather.temp).length
+          ).toFixed(2)
+        );
+
+        return (
+          <div
+            className="flex items-center justify-between gap-4 py-4"
+            key={`${weather.dt}_${idx}`}
+          >
+            <div className="flex gap-4">
+              <div className="h-20 w-20">{weatherIcons[weather.weather[0].description]}</div>
+              <div className="flex flex-col items-center justify-center">
+                <p>Average temp:</p>
+                <span>
+                  {isCelsius ? fahrenheitToCelsius(averageDailyTemp) : averageDailyTemp}&deg;
+                </span>
+              </div>
+            </div>
+            <p>{weather.summary}</p>
+            <div className="flex gap-8 text-sm lg:flex-col lg:gap-0">
+              <div className="flex flex-col items-center ">
+                <Sunrise className="w-14" />
+                <div className="flex gap-2">
+                  <span>sunrise</span>
+                  <span>
+                    {convertEpochTo24HrTime({
+                      epoch: weather.sunrise,
+                      offset: timezoneOffset,
+                    })}
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-col items-center">
+                <Sunset className="w-14" />
+                <div className="flex gap-2">
+                  <span>sunset</span>
+                  <span>
+                    {convertEpochTo24HrTime({
+                      epoch: weather.sunset,
+                      offset: timezoneOffset,
+                    })}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <ul className="divide-y divide-violet-700 capitalize">
+              <li>
+                <HorizontalTable title="Wind" value={weather.wind_speed} />
+              </li>
+              <li>
+                <HorizontalTable title="Humidity" value={weather.humidity} valueSymbol="%" />
+              </li>
+              <li>
+                <HorizontalTable title="Pressue" value={weather.pressure} />
+              </li>
+              <li>
+                <HorizontalTable title="UVI" value={weather.uvi} />
+              </li>
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 type WeatherCardProps = {
   className?: string;
@@ -50,12 +215,12 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
       >
         <div className="flex items-baseline justify-between p-2">
           <div className="divide-y divide-violet-700">
+            <span className="block text-xl font-light tracking-wider">
+              {weather === 'current-weather' ? 'Current Weather' : '10 Day Forecast'}
+            </span>
             <span className="block">
               Current Time:&nbsp;
               {convertEpochTo24HrTime({ epoch: data.current.dt, offset: data.timezone_offset })}
-            </span>
-            <span className="block">
-              {weather === 'current-weather' ? 'Current' : 'Forecast'} Weather:
             </span>
           </div>
           <Toggle
@@ -65,92 +230,41 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
             isChecked={isCelsius}
           />
         </div>
-        <div className="flex flex-col items-center gap-8 lg:flex-row">
-          <div className="flex items-center gap-8 md:w-96">
-            <div className="h-32 w-32">{weatherIcons[data.current.weather[0].description]}</div>
-            <div>
-              <h2 className="text-3xl">
-                {isCelsius ? fahrenheitToCelsius(data.current.temp) : data.current.temp}&deg;
-              </h2>
-              <span className="mb-4 inline-block capitalize">
-                {data.current.weather[0].description}
-              </span>
-            </div>
-          </div>
-          <div className="flex flex-1 flex-col gap-4 sm:flex-row sm:gap-16">
-            <ul className="divide-y divide-violet-700 capitalize">
-              <li>
-                <HorizontalTable
-                  title="Feels Like"
-                  value={
-                    isCelsius
-                      ? fahrenheitToCelsius(data.current.feels_like)
-                      : data.current.feels_like
-                  }
-                  valueSymbol="°"
-                />
-              </li>
-              <li>
-                <HorizontalTable title="Humidity" value={data.current.humidity} valueSymbol="%" />
-              </li>
-              <li>
-                <HorizontalTable title="Pressue" value={data.current.pressure} />
-              </li>
-              <li>
-                <HorizontalTable title="UVI" value={data.current.uvi} />
-              </li>
-            </ul>
-            <ul className="divide-y divide-violet-700 capitalize">
-              <li>
-                <HorizontalTable title="Clouds" value={data.current.clouds} valueSymbol="%" />
-              </li>
-              <li>
-                <HorizontalTable title="Wind" value={data.current.wind_deg} />
-              </li>
-              <li>
-                <HorizontalTable title="Wind Gust" value={data.current.wind_gust} />
-              </li>
-              <li>
-                <HorizontalTable title="Wind Speed" value={data.current.wind_speed} />
-              </li>
-            </ul>
-          </div>
-          <div className="flex gap-8 text-sm lg:flex-col lg:gap-0">
-            <div className="flex flex-col items-center ">
-              <Sunrise className="w-14" />
-              <div className="flex gap-2">
-                <span>sunrise</span>
-                <span>
-                  {convertEpochTo24HrTime({
-                    epoch: data.current.sunrise,
-                    offset: data.timezone_offset,
-                  })}
-                </span>
-              </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <Sunset className="w-14" />
-              <div className="flex gap-2">
-                <span>sunset</span>
-                <span>
-                  {convertEpochTo24HrTime({
-                    epoch: data.current.sunset,
-                    offset: data.timezone_offset,
-                  })}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {data.hourly.length >= 2 && (
-        <section className="bg-primary mt-4 w-full rounded-lg px-4 py-2 shadow-lg">
-          <HourlyWeather
-            data={data.hourly}
-            timezoneOffset={data.timezone_offset}
-            isCelsuis={isCelsius}
+        {weather === 'current-weather' ? (
+          <CurrentCard
+            data={data.current}
+            timezone_offset={data.timezone_offset}
+            isCelsius={isCelsius}
           />
-        </section>
+        ) : (
+          <ForecastCard
+            data={data.daily}
+            isCelsius={isCelsius}
+            timezoneOffset={data.timezone_offset}
+          />
+        )}
+      </section>
+      {weather === 'current-weather' && (
+        <>
+          {data.hourly.length >= 2 && (
+            <section className="bg-primary mt-4 w-full rounded-lg px-4 py-2 shadow-lg">
+              <h2 className="mb-4 text-xl font-light tracking-wider">Hourly Forecast</h2>
+              <HourlyWeather
+                data={data.hourly}
+                timezoneOffset={data.timezone_offset}
+                isCelsius={isCelsius}
+              />
+            </section>
+          )}
+          <section className="bg-primary mt-4 w-full rounded-lg px-4 py-2 shadow-lg">
+            <h2 className="mb-4 text-xl font-light tracking-wider">Daily Forecast</h2>
+            <HourlyWeather
+              data={data.daily}
+              timezoneOffset={data.timezone_offset}
+              isCelsius={isCelsius}
+            />
+          </section>
+        </>
       )}
     </div>
   );
