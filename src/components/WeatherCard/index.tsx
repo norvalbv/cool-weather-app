@@ -6,9 +6,9 @@ import Toggle from 'components/Toggle';
 import Sunrise from 'components/SVG/Weather/Sunrise';
 import Sunset from 'components/SVG/Weather/Sunset';
 import HorizontalTable from 'components/HorizontalTable';
-import { weatherIcons } from 'components/constants/weatherIcons';
+import { weatherIcons } from 'constants/weatherIcons';
 import RowWeatherCard from './RowWeatherCard';
-import { convertEpochTo24HrTime } from 'utils/convertToTime';
+import { convertEpochTo24HrTime, convertToDate } from 'utils/convertToTime';
 import fahrenheitToCelsius from 'utils/fahrenheitToCelcuis';
 import tempValidator from 'utils/tempValidator';
 
@@ -110,60 +110,63 @@ const ForecastCard = ({ data, isCelsius, timezoneOffset }: ForecastCardProps): R
         const averageDailyTemp = tempValidator(weather.temp);
 
         return (
-          <div
-            className="flex items-center justify-between gap-4 py-4"
-            key={`${weather.dt}_${idx}`}
-          >
-            <div className="flex gap-4">
-              <div className="h-20 w-20">{weatherIcons[weather.weather[0].description]}</div>
-              <div className="flex flex-col items-center justify-center">
-                <p>Average temp:</p>
-                <span>
-                  {isCelsius ? fahrenheitToCelsius(averageDailyTemp) : averageDailyTemp}&deg;
-                </span>
-              </div>
-            </div>
-            <p>{weather.summary}</p>
-            <div className="flex gap-8 text-sm lg:flex-col lg:gap-0">
-              <div className="flex flex-col items-center ">
-                <Sunrise className="w-14" />
-                <div className="flex gap-2">
-                  <span>sunrise</span>
+          <div className="relative py-4">
+            <h2 className="absolute left-4 top-4 text-xl tracking-wider">
+              Date:&nbsp;
+              {convertToDate(weather.dt * 1000, false, { type: 'short' })}
+            </h2>
+            <div className="flex items-center justify-between" key={`${weather.dt}_${idx}`}>
+              <div className="flex gap-4">
+                <div className="h-20 w-20">{weatherIcons[weather.weather[0].description]}</div>
+                <div className="flex flex-col items-center justify-center">
+                  <p>Average temp:</p>
                   <span>
-                    {convertEpochTo24HrTime({
-                      epoch: weather.sunrise,
-                      offset: timezoneOffset,
-                    })}
+                    {isCelsius ? fahrenheitToCelsius(averageDailyTemp) : averageDailyTemp}&deg;
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col items-center">
-                <Sunset className="w-14" />
-                <div className="flex gap-2">
-                  <span>sunset</span>
-                  <span>
-                    {convertEpochTo24HrTime({
-                      epoch: weather.sunset,
-                      offset: timezoneOffset,
-                    })}
-                  </span>
+              <p>{weather.summary}</p>
+              <div className="flex gap-8 text-sm lg:flex-col lg:gap-0">
+                <div className="flex flex-col items-center ">
+                  <Sunrise className="w-14" />
+                  <div className="flex gap-2">
+                    <span>sunrise</span>
+                    <span>
+                      {convertEpochTo24HrTime({
+                        epoch: weather.sunrise,
+                        offset: timezoneOffset,
+                      })}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center">
+                  <Sunset className="w-14" />
+                  <div className="flex gap-2">
+                    <span>sunset</span>
+                    <span>
+                      {convertEpochTo24HrTime({
+                        epoch: weather.sunset,
+                        offset: timezoneOffset,
+                      })}
+                    </span>
+                  </div>
                 </div>
               </div>
+              <ul className="divide-y divide-violet-700 capitalize">
+                <li>
+                  <HorizontalTable title="Wind" value={weather.wind_speed} />
+                </li>
+                <li>
+                  <HorizontalTable title="Humidity" value={weather.humidity} valueSymbol="%" />
+                </li>
+                <li>
+                  <HorizontalTable title="Pressue" value={weather.pressure} />
+                </li>
+                <li>
+                  <HorizontalTable title="UVI" value={weather.uvi} />
+                </li>
+              </ul>
             </div>
-            <ul className="divide-y divide-violet-700 capitalize">
-              <li>
-                <HorizontalTable title="Wind" value={weather.wind_speed} />
-              </li>
-              <li>
-                <HorizontalTable title="Humidity" value={weather.humidity} valueSymbol="%" />
-              </li>
-              <li>
-                <HorizontalTable title="Pressue" value={weather.pressure} />
-              </li>
-              <li>
-                <HorizontalTable title="UVI" value={weather.uvi} />
-              </li>
-            </ul>
           </div>
         );
       })}

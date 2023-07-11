@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { useWeather } from 'services';
 import Loader from 'components/Loader';
-import data from '__mocks__/WeatherApiMockData.json';
+// import data from '__mocks__/WeatherApiMockData.json';
 import WebStats from 'components/WebStats';
 import WeatherCard from 'components/WeatherCard';
 import ButtonGroup from 'components/ButtonGroup';
 import { ButtonGroupKeys, WeatherApiData } from 'types';
 
 const Landing = () => {
-  // const { data } = useWeather({ lat: 10, lon: 10 });
+  const { data } = useWeather({ lat: 10, lon: 10 });
   const [weather, setWeather] = useState<ButtonGroupKeys>('current-weather');
+
+  console.log(data);
 
   if (!data) return <Loader />;
 

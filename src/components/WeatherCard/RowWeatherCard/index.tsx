@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { weatherIcons } from 'components/constants/weatherIcons';
+import { weatherIcons } from 'constants/weatherIcons';
 import { WeatherBase } from 'types';
 import { convertEpochTo24HrTime } from 'utils/convertToTime';
 import fahrenheitToCelsius from 'utils/fahrenheitToCelcuis';
