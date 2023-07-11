@@ -3,28 +3,11 @@
 <h3 align="center">Cool Weather App</h3>
 
   <p align="center">
-    A Weather Application built with [openweathermap](openweathermap.org) API.
+    A Weather Application built with openweathermap.org API.
   </p>
 
   ![Project Screenshot](./public/homepage.png)
 </div>
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-    </li>
-  </ol>
-</details>
-
 
 ## Built With
 
@@ -38,8 +21,6 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-<!-- GETTING STARTED -->
 ## Getting Started
 
 The project is not hosted anywhere so the only way to view it is locally. To get stated, clone the repositiory, do a yarn install, and start the server. Here's a step by step guide:
