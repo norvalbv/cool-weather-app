@@ -7,11 +7,10 @@ import { ButtonGroupKeys, WeatherApiData } from 'types';
 import Search, { SearchValue } from 'components/Search';
 
 const Landing = () => {
-  const [latLon, setLatLon] = useState<SearchValue>({ lat: 10, lon: 10 });
+  const [latLon, setLatLon] = useState<SearchValue>({ lat: 25, lon: 25 });
   const { data } = useWeather(latLon);
   const [weather, setWeather] = useState<ButtonGroupKeys>('current-weather');
 
-  console.log(data, latLon);
   if (!data) return <Loader />;
 
   return (
