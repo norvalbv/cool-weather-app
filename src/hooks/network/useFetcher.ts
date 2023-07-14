@@ -1,26 +1,16 @@
-import axios, { AxiosError, RawAxiosRequestHeaders } from 'axios';
+import axios, { AxiosError } from 'axios';
 import { ApiError } from 'types';
 
-export type FetcherOptions = {
-  cache?: boolean;
-};
 export type UseFetcherProps = {
   uri: string;
-  fetcherOptions?: FetcherOptions;
 };
 
 /**
  * Custom fetcher for SWR and axios
  */
-const useFetcher = <T>({ uri, fetcherOptions }: UseFetcherProps): Promise<T> => {
-  const headers: RawAxiosRequestHeaders | undefined = fetcherOptions ? {} : undefined;
-
-  if (headers && !fetcherOptions?.cache) {
-    // The Cache-Control HTTP header field holds instructions — in both requests and responses.
-    headers['Cache-Control'] = 'no-cache';
-  }
-
-  return axios<T>(uri, { headers })
+const useFetcher = async <T>({ uri }: UseFetcherProps): Promise<T> => {
+  return axios
+    .get<T>(uri)
     .then((res) => res.data)
     .catch((error: Error | AxiosError<{ detail: string }>) => {
       const err = <ApiError>{};

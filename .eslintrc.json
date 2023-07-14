@@ -76,7 +76,6 @@
     "no-nested-ternary": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "react/jsx-no-useless-fragment": ["error", { "allowExpressions": true }],
-    "custom-rules/no-px-in-tailwind": "warn",
     "@typescript-eslint/prefer-namespace-keyword": "off",
     "@typescript-eslint/no-namespace": "off"
   }

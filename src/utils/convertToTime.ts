@@ -3,7 +3,7 @@ type ConvertEpochTo24HrTimeProps = { epoch: number; offset: number };
 export const convertEpochTo24HrTime = ({ epoch, offset }: ConvertEpochTo24HrTimeProps): string => {
   const date = new Date((epoch + offset) * 1000);
   const hours = date.getUTCHours();
-  const minutes = '0' + date.getUTCMinutes();
+  const minutes = `0${date.getUTCMinutes()}`;
 
   return `${hours}:${minutes.substr(-2)}`;
 };

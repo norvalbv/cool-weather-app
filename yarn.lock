@@ -1057,11 +1057,13 @@ __metadata:
     eslint-config-airbnb: ^19.0.4
     eslint-config-airbnb-typescript: ^17.0.0
     eslint-config-prettier: ^8.8.0
+    eslint-plugin-custom-rules: ^0.0.0
     eslint-plugin-import: ^2.27.5
     eslint-plugin-jsx-a11y: ^6.7.1
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-react: ^7.32.2
     eslint-plugin-react-hooks: ^4.6.0
+    eslint-plugin-tailwindcss: ^3.13.0
     flowbite: ^1.7.0
     flowbite-react: ^0.4.11
     husky: ^8.0.3
@@ -2269,6 +2271,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-custom-rules@npm:^0.0.0":
+  version: 0.0.0
+  resolution: "eslint-plugin-custom-rules@npm:0.0.0"
+  dependencies:
+    jsx-ast-utils: ^1.3.5
+    lodash: ^4.17.4
+    object-assign: ^4.1.0
+    requireindex: ~1.1.0
+  checksum: ff1d03612a93da0b9cb483c7df873c91065b73b574e78197a6e359825c9bed34d22a116db179a82f3a06ee640248d9a9d0a9a82a50307fa726c6bc180e9dbf8e
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-import@npm:^2.27.5":
   version: 2.27.5
   resolution: "eslint-plugin-import@npm:2.27.5"
@@ -2366,6 +2380,18 @@ __metadata:
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
   checksum: 2232b3b8945aa50b7773919c15cd96892acf35d2f82503667a79e2f55def90f728ed4f0e496f0f157acbe1bd4397c5615b676ae7428fe84488a544ca53feb944
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-tailwindcss@npm:^3.13.0":
+  version: 3.13.0
+  resolution: "eslint-plugin-tailwindcss@npm:3.13.0"
+  dependencies:
+    fast-glob: ^3.2.5
+    postcss: ^8.4.4
+  peerDependencies:
+    tailwindcss: ^3.3.2
+  checksum: 0ed226300b613987e59d1374c611c374add3205b73647e8ec910ad2409a2a07f9605cb7e6e7a34bda7702946681aef4a289c6b6bcf9f1357fa6bc4e0ee8f508b
   languageName: node
   linkType: hard
 
@@ -2547,7 +2573,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.11":
+"fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.5":
   version: 3.3.0
   resolution: "fast-glob@npm:3.3.0"
   dependencies:
@@ -3590,6 +3616,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jsx-ast-utils@npm:^1.3.5":
+  version: 1.4.1
+  resolution: "jsx-ast-utils@npm:1.4.1"
+  checksum: dc4874c45f7fcd6dad9bd9268f0e5bf9fec85884eacc09481115b2b992758eafece4b407c008fd653dd267aca0e274a09182193787337efdc5bd59aa4fcdbc6b
+  languageName: node
+  linkType: hard
+
 "jsx-ast-utils@npm:^2.4.1 || ^3.0.0, jsx-ast-utils@npm:^3.3.3":
   version: 3.3.3
   resolution: "jsx-ast-utils@npm:3.3.3"
@@ -3697,6 +3730,13 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: ad580b4bdbb7ca1f7abf7e1bce63a9a0b98e370cf40194b03380a46b4ed799c9573029599caebc1b14e3f24b111aef72b96674a56cfa105e0f5ac70546cdc005
+  languageName: node
+  linkType: hard
+
+"lodash@npm:^4.17.4":
+  version: 4.17.21
+  resolution: "lodash@npm:4.17.21"
+  checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
   languageName: node
   linkType: hard
 
@@ -4142,7 +4182,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"object-assign@npm:^4.0.1, object-assign@npm:^4.1.1":
+"object-assign@npm:^4.0.1, object-assign@npm:^4.1.0, object-assign@npm:^4.1.1":
   version: 4.1.1
   resolution: "object-assign@npm:4.1.1"
   checksum: fcc6e4ea8c7fe48abfbb552578b1c53e0d194086e2e6bbbf59e0a536381a292f39943c6e9628af05b5528aa5e3318bb30d6b2e53cadaf5b8fe9e12c4b69af23f
@@ -4520,6 +4560,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss@npm:^8.4.4":
+  version: 8.4.26
+  resolution: "postcss@npm:8.4.26"
+  dependencies:
+    nanoid: ^3.3.6
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: 1cf08ee10d58cbe98f94bf12ac49a5e5ed1588507d333d2642aacc24369ca987274e1f60ff4cbf0081f70d2ab18a5cd3a4a273f188d835b8e7f3ba381b184e57
+  languageName: node
+  linkType: hard
+
 "prelude-ls@npm:^1.2.1":
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
@@ -4775,6 +4826,13 @@ __metadata:
   version: 0.2.7
   resolution: "relateurl@npm:0.2.7"
   checksum: 5891e792eae1dfc3da91c6fda76d6c3de0333a60aa5ad848982ebb6dccaa06e86385fb1235a1582c680a3d445d31be01c6bfc0804ebbcab5aaf53fa856fde6b6
+  languageName: node
+  linkType: hard
+
+"requireindex@npm:~1.1.0":
+  version: 1.1.0
+  resolution: "requireindex@npm:1.1.0"
+  checksum: 397057d97d7f753a3851abf0d6db94c295bd8254536f71f622b896ba08ea8c0d3e3771c8b009a557e6ce602f4245c0588836cdf59c4ce588fff721a7b855d323
   languageName: node
   linkType: hard
 

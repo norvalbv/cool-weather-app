@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useWeather } from 'services';
 import Loader from 'components/Loader';
 import WeatherCard from 'components/WeatherCard';
@@ -6,12 +6,12 @@ import ButtonGroup from 'components/ButtonGroup';
 import { ButtonGroupKeys, WeatherApiData } from 'types';
 import Search, { SearchValue } from 'components/Search';
 
-const Landing = () => {
+const Landing = (): ReactElement => {
   const [latLon, setLatLon] = useState<SearchValue>({ lat: 25, lon: 25 });
-  const { data } = useWeather(latLon);
+  const { data, isLoading } = useWeather(latLon);
   const [weather, setWeather] = useState<ButtonGroupKeys>('current-weather');
 
-  if (!data) return <Loader />;
+  if (isLoading) return <Loader />;
 
   return (
     <div className="relative mx-auto max-w-4xl">

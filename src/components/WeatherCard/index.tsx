@@ -7,10 +7,10 @@ import Sunrise from 'components/SVG/Weather/Sunrise';
 import Sunset from 'components/SVG/Weather/Sunset';
 import HorizontalTable from 'components/HorizontalTable';
 import { weatherIcons } from 'constants/weatherIcons';
-import RowWeatherCard from './RowWeatherCard';
 import { convertEpochTo24HrTime, convertToDate } from 'utils/convertToTime';
 import fahrenheitToCelsius from 'utils/fahrenheitToCelcuis';
 import tempValidator from 'utils/tempValidator';
+import RowWeatherCard from './RowWeatherCard';
 
 type CurrentCardProps = {
   data: CurrentWeather;

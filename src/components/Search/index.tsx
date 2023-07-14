@@ -57,7 +57,7 @@ const Search = ({ setLatLon }: SearchProps): ReactElement => {
           <input
             type="number"
             id="search-navbar"
-            className="block w-32 rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 focus:border-violet-500 focus:ring-violet-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-violet-500 dark:focus:ring-violet-500"
+            className="block w-32 rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 focus:border-violet-500 focus:ring-violet-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-violet-500 dark:focus:ring-violet-500"
             placeholder="Latitude"
             onChange={(e): void => setQueryByKey('lat', Number(e.target.value))}
           />
@@ -82,14 +82,14 @@ const Search = ({ setLatLon }: SearchProps): ReactElement => {
           <input
             type="number"
             id="search-navbar"
-            className="block w-32 rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 focus:border-violet-500 focus:ring-violet-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-violet-500 dark:focus:ring-violet-500"
+            className="block w-32 rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 focus:border-violet-500 focus:ring-violet-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-violet-500 dark:focus:ring-violet-500"
             placeholder="Longitude"
             onChange={(e): void => setQueryByKey('lon', Number(e.target.value))}
           />
         </div>
         <button
           type="submit"
-          className="w-24 rounded-lg border border-gray-300 bg-gray-50 px-4 text-sm uppercase text-gray-900 hover:font-semibold focus:border-violet-500 focus:ring-violet-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-violet-500 dark:focus:ring-violet-500"
+          className="w-24 rounded-lg border border-gray-300 bg-gray-50 px-4 text-sm uppercase text-gray-900 hover:font-semibold focus:border-violet-500 focus:ring-violet-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-violet-500 dark:focus:ring-violet-500"
         >
           Search
         </button>

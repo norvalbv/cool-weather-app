@@ -1,6 +1,6 @@
 import { Temperature } from 'types';
 
-const tempValidator = (temp: number | Temperature) => {
+const tempValidator = (temp: number | Temperature): number => {
   const temperature =
     typeof temp === 'object'
       ? Number(

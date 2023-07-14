@@ -1,11 +1,10 @@
 import useSWR, { SWRConfiguration } from 'swr';
 import { ApiError, ApiResponse } from 'types/api';
-import fetcher, { FetcherOptions } from 'hooks/network/useFetcher';
+import fetcher from 'hooks/network/useFetcher';
 
 type UseRequestParameters<T> = {
   uri: string;
   options?: SWRConfiguration<T>;
-  fetcherOptions?: FetcherOptions;
 };
 
 /**
@@ -14,23 +13,20 @@ type UseRequestParameters<T> = {
 const defaultOptions: SWRConfiguration = {
   onErrorRetry: (error: ApiError, key, config, revalidate, { retryCount }) => {
     // Only retry on 404s up to 5 times
+    // eslint-disable-next-line no-useless-return
     if (error.status === 404 && retryCount > 5) return;
   },
 };
 
 /**
- * Custom hook for HTTP GET Requests.
+ * Custom hook for HTTP GET Requests using the SWR data cache.
  */
-const useRequest = <T>({
-  uri,
-  options,
-  fetcherOptions,
-}: UseRequestParameters<T>): ApiResponse<T> => {
-  // Fetch data only if the `uri` and `token` are not empty strings.
+const useRequest = <T>({ uri, options }: UseRequestParameters<T>): ApiResponse<T> => {
+  // Fetch data only if the `uri` is not an empty string.
   // https://swr.vercel.app/docs/conditional-fetching
   const { data, error, isValidating, isLoading } = useSWR<T, ApiError>(
     uri,
-    uri ? (): Promise<T> => fetcher<T>({ uri, fetcherOptions }) : null,
+    uri ? (): Promise<T> => fetcher<T>({ uri }) : null,
     {
       ...defaultOptions,
       ...options,
