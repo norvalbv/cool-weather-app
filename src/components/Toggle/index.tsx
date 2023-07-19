@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-type ToggleProps = {
+export type ToggleProps = {
   labelLeft?: string;
   labelRight?: string;
   onclick?: () => void;
@@ -12,6 +12,7 @@ const Toggle = ({ labelLeft, labelRight, onclick, isChecked }: ToggleProps): Rea
     if (onclick) onclick();
   };
   return (
+    // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label className="mb-5 flex items-center gap-2">
       {labelLeft && (
         <span className={!isChecked ? 'text-violet-700 underline' : ''}>{labelLeft}</span>

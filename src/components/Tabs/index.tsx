@@ -11,7 +11,7 @@ type ButtonProps = {
   title: string | JSX.Element;
 };
 
-type TabsProps = {
+export type TabsProps = {
   className?: string;
   data: ButtonProps[];
 };
