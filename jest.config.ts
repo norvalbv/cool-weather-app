@@ -24,7 +24,6 @@ export default (): Config => {
         '<rootDir>/src/__mocks__/fileMock.js',
       '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
       axios: '<rootDir>/node_modules/axios/dist/axios.min.js',
-      '^d3-(.*)$': '<rootDir>/node_modules/d3-$1/dist/d3-$1.js',
     },
     preset: 'ts-jest',
     setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
