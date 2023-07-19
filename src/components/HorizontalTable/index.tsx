@@ -1,13 +1,13 @@
 import React, { ReactElement } from 'react';
 import classNames from 'utils/classNames';
 
-export interface HorizontalTableProps {
+export type HorizontalTableProps = {
   title: string;
   value: JSX.Element | JSX.Element[] | string | number | null;
   valueSymbol?: string;
   widths?: { title: string; value: string };
   requirePadding?: boolean;
-}
+};
 
 const HorizontalTable = ({
   title,
