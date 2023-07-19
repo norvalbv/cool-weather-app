@@ -11,6 +11,7 @@ const AlertBanner = ({ alerts }: AlertBannerProps): ReactElement => {
   return (
     <>
       {alerts.map((alert, idx) => (
+        // eslint-disable-next-line react/no-array-index-key
         <div key={`${alert.event}_${idx}`} className="flex items-center gap-4">
           <AlertIcon />
           <div className="flex flex-col gap-2">
