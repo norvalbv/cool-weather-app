@@ -13,7 +13,6 @@ export type WeatherBase = {
   clouds: number;
   dew_point: number;
   dt: number;
-  feels_like: number;
   humidity: number;
   pressure: number;
   temp: Temperature | number;
@@ -46,10 +45,12 @@ export type DailyWeather = {
 type HourlyWeather = {
   pop?: number;
   rain?: { [key: string]: number };
+  feels_like: number;
 } & WeatherBase;
 
 export type CurrentWeather = {
   sunrise: number;
+  feels_like: number;
   sunset: number;
 } & WeatherBase;
 

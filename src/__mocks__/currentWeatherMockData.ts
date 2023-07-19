@@ -1,4 +1,6 @@
-export const weatherMockData = {
+import { WeatherApiData } from 'types';
+
+export const weatherMockData: WeatherApiData = {
   lat: 33.44,
   lon: -94.04,
   timezone: 'America/Chicago',
@@ -191,6 +193,7 @@ export const weatherMockData = {
       pop: 0.47,
       rain: 0.15,
       uvi: 9.23,
+      visibility: 10,
     },
     {
       dt: 1684951200,
@@ -232,6 +235,7 @@ export const weatherMockData = {
       pop: 0.47,
       rain: 0.15,
       uvi: 9.23,
+      visibility: 10,
     },
   ],
   alerts: [
