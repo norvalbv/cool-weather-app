@@ -26,6 +26,7 @@ const RowWeatherCard = ({
         return (
           <div
             className="flex w-32 flex-col items-center justify-center gap-1"
+            // eslint-disable-next-line react/no-array-index-key
             key={`${weather.dt}_${idx}`}
           >
             <span>

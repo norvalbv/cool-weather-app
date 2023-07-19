@@ -1,4 +1,4 @@
-import { ReactElement, createContext, useState } from 'react';
+import React, { ReactElement, createContext, useState } from 'react';
 
 type ThemeContextValue = {
   isDarkMode: boolean;

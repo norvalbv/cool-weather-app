@@ -1,3 +1,4 @@
+import React from 'react';
 import ClearDay from 'components/SVG/Weather/ClearDay';
 import LightRainDay from 'components/SVG/Weather/LightRainDay';
 import OvercastDay from 'components/SVG/Weather/OvercastDay';

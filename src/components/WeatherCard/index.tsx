@@ -110,12 +110,13 @@ const ForecastCard = ({ data, isCelsius, timezoneOffset }: ForecastCardProps): R
         const averageDailyTemp = tempValidator(weather.temp);
 
         return (
+          // eslint-disable-next-line react/no-array-index-key
           <div className="relative py-4" key={`${weather.dt}_${idx}`}>
             <h2 className="absolute left-4 top-4 text-xl tracking-wider">
               Date:&nbsp;
               {convertToDate(weather.dt * 1000, false, { type: 'short' })}
             </h2>
-            <div className="flex items-center justify-between" key={`${weather.dt}_${idx}`}>
+            <div className="flex items-center justify-between">
               <div className="flex gap-4">
                 <div className="h-20 w-20">{weatherIcons[weather.weather[0].description]}</div>
                 <div className="flex flex-col items-center justify-center">
@@ -204,10 +205,7 @@ const WeatherCard = ({ className, data, weather }: WeatherCardProps): ReactEleme
             target="_blank"
             rel="noopener noreferrer"
           >
-            <CodeIcon
-              tabIndex={1}
-              className="cursor-pointer rounded-lg border bg-gray-500 p-1 hover:bg-gray-200 focus:ring-4 focus:ring-blue-300"
-            />
+            <CodeIcon className="cursor-pointer rounded-lg border bg-gray-500 p-1 hover:bg-gray-200 focus:ring-4 focus:ring-blue-300" />
           </a>
         </div>
       </div>

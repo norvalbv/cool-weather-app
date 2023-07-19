@@ -78,5 +78,3 @@ export type WeatherApiData = {
   timezone: string;
   timezone_offset: number;
 };
-
-export type ButtonGroupKeys = 'current-weather' | 'forecast';
