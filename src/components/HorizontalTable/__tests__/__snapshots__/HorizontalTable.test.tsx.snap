@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HorizontalTable /> Should render correctly with all props 1`] = `
+<div
+  className="group flex w-40"
+>
+  <div
+    className="text-neutral-N400 select-none leading-[1.145] py-2 2/5"
+  >
+    Test Title
+  </div>
+  <div
+    className="text-neutral-N600 text-right leading-[1.145] py-2 3/5"
+  >
+    3
+     
+    #
+  </div>
+</div>
+`;
+
+exports[`<HorizontalTable /> Should render correctly with mandatory props 1`] = `
+<div
+  className="group flex w-40"
+>
+  <div
+    className="text-neutral-N400 select-none leading-[1.145] py-2 w-3/5"
+  >
+    Test Title
+  </div>
+  <div
+    className="text-neutral-N600 text-right leading-[1.145] py-2 w-2/5"
+  >
+    3
+     
+  </div>
+</div>
+`;

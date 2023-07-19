@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardWrapper /> Should render correctly with all props 1`] = `
+<div
+  className="relative z-10 bg-white text-black"
+  role="button"
+>
+  <div
+    className="max-w-[2000px] mx-auto bg-red-500"
+  >
+    <div>
+      Child
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<CardWrapper /> Should render correctly with mandatory props 1`] = `
+<div
+  className="relative z-10 bg-primary-dark text-primary-light"
+>
+  <div
+    className="max-w-[2000px] mx-auto"
+  >
+    <div>
+      Child
+    </div>
+  </div>
+</div>
+`;

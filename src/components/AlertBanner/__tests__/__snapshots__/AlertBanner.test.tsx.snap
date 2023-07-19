@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AlertBanner /> Should render correctly with mandatory props 1`] = `
+[
+  <div
+    className="flex items-center gap-4"
+  >
+    <svg>
+      AlertIcon
+    </svg>
+    <div
+      className="flex flex-col gap-2"
+    >
+      <div>
+        <h2
+          className="font-semibold underline"
+        >
+          Big Snow Storm!
+        </h2>
+        <span
+          className="inline-block"
+        >
+          Start Time: 
+          01/02/1970
+        </span>
+        <span
+          className="inline-block"
+        >
+          End Time: 
+          05/23/1970
+        </span>
+      </div>
+      <p
+        className="text-sm"
+      >
+        Uh Oh
+      </p>
+    </div>
+  </div>,
+  <div
+    className="flex items-center gap-4"
+  >
+    <svg>
+      AlertIcon
+    </svg>
+    <div
+      className="flex flex-col gap-2"
+    >
+      <div>
+        <h2
+          className="font-semibold underline"
+        >
+          Big Snow Storm!
+        </h2>
+        <span
+          className="inline-block"
+        >
+          Start Time: 
+          01/02/1970
+        </span>
+        <span
+          className="inline-block"
+        >
+          End Time: 
+          05/23/1970
+        </span>
+      </div>
+      <p
+        className="text-sm"
+      >
+        Uh Oh
+      </p>
+    </div>
+  </div>,
+]
+`;

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Toggle /> Should render correctly with all props 1`] = `
+<label
+  className="mb-5 flex items-center gap-2"
+>
+  <span
+    className=""
+  >
+    Test Label Left
+  </span>
+  <div
+    className="relative inline-flex cursor-pointer items-center"
+  >
+    <input
+      className="peer sr-only"
+      type="checkbox"
+    />
+    <div
+      className="bg-secondary peer h-5 w-9 rounded-full after:absolute after:left-[2px] after:top-[2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800"
+      onClick={[Function]}
+    />
+  </div>
+  <span
+    className="text-violet-700 underline"
+  >
+    Test Label Right
+  </span>
+</label>
+`;
+
+exports[`<Toggle /> Should render correctly with mandatory props 1`] = `
+<label
+  className="mb-5 flex items-center gap-2"
+>
+  <div
+    className="relative inline-flex cursor-pointer items-center"
+  >
+    <input
+      className="peer sr-only"
+      type="checkbox"
+    />
+    <div
+      className="bg-secondary peer h-5 w-9 rounded-full after:absolute after:left-[2px] after:top-[2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800"
+      onClick={[Function]}
+    />
+  </div>
+</label>
+`;
