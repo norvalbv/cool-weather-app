@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tabs /> Should render correctly with all props 1`] = `
+<div
+  className="relative flex items-center justify-center bg-red-500"
+>
+  <button
+    aria-current="page"
+    className="w-40 border border-gray-200 bg-white py-4 text-sm font-medium first:rounded-l-xl first:border-l last:rounded-r-xl hover:bg-gray-100 focus:z-10 focus:text-violet-700 focus:ring-2 focus:ring-violet-700 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-violet-500 text-violet-700"
+    onClick={[Function]}
+    type="button"
+  >
+    Current Weather
+  </button>
+</div>
+`;
+
+exports[`<Tabs /> Should render correctly with mandatory props 1`] = `
+<div
+  className="relative flex items-center justify-center shadow-sm"
+/>
+`;
